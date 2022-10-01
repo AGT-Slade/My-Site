@@ -1,146 +1,438 @@
-body {
+* {
   margin: 0;
-  text-align: center;
-  font-family: "Merriweather", serif;
-  background-color: rgb(31, 203, 226);
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+
+body {
+  height: 100vh;
+  background: powderblue;
+  font-family: sans-serif;
   font-size: 1em;
 }
 
-h1 {
-  color: black;
-  font-family: "Sacramento", cursive;
-  font-size: 5.625rem;
-  line-height: 2;
-  margin: 50px auto 0 auto;
+section nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 5%;
+  align-items: center;
+  background: rgb(32, 32, 32);
 }
 
-h2 {
-  color: black;
-  font-family: "Montserrat", sans-serif;
-  font-size: 2.5rem;
-  font-weight: normal;
-  padding-bottom: 10px;
+section nav img, #sidebar img {
+  height: 50px;
+  padding: 0 10px;
+  filter: invert(1) brightness(100);
 }
 
-h3 {
-  color: black;
-  font-family: "Montserrat", sans-serif;
+nav .logo {
+  color: #FFF;
+  font-size: 1.5rem;
+  margin-right: 20px;
 }
 
-p {
-  line-height: 2;
-}
-
-hr {
-  border: dotted #eaf6f6 6px;
-  border-bottom: none;
-  width: 4%;
-  margin: 100px auto;
-}
-
-a {
-  color: #11999e;
-  font-family: "Montserrat", sans-serif;
-  margin: 10px 20px;
-  text-decoration: none;
-}
-
-a:hover {
-  color: #eaf6f6;
-}
-
-.top-container {
-  position: relative;
-  padding-top: 100px;
-}
-
-.middle-container {
-  margin: 100px 0;
-}
-
-.bottom-container {
-  background-color: #66bfbf;
-  padding: 50px 0 20px;
-}
-
-.skill-row {
-  width: 50%;
-  margin: 100px auto 100px auto;
-  text-align: left;
-}
-
-.pro {
-  text-decoration: underline;
-}
-
-.intro {
-  width: 30%;
+nav ul {
+  list-style: none;
   margin: auto;
+  margin-right: 0;
+  flex-shrink: 0;
 }
 
-.contact-message {
-  width: 40%;
-  margin: 40px auto 60px;
+nav ul li {
+  display: inline-block;
+  margin: 12px auto;
 }
 
-.copyright {
-  color: #eaf6f6;
-  font-size: 0.75rem;
-  padding: 20px 0;
-}
-
-.top-cloud {
-  position: absolute;
-  right: 40px;
-  top: 50px;
-}
-
-.bottom-cloud {
-  position: absolute;
-  left: 250px;
-  bottom: 300px;
-}
-
-.code-img {
-  width: 25%;
-  float: left;
-  margin-right: 30px;
-  border-radius: 100%;
-}
-
-.chilli-img {
-  width: 25%;
-  float: right;
-  margin-left: 30px;
-}
-
-.profile {
-  border-radius: 100%;
-}
-
-.btn {
-  background: #11cdd4;
-  background-image: -webkit-linear-gradient(top, #11cdd4, #11999e);
-  background-image: -moz-linear-gradient(top, #11cdd4, #11999e);
-  background-image: -ms-linear-gradient(top, #11cdd4, #11999e);
-  background-image: -o-linear-gradient(top, #11cdd4, #11999e);
-  background-image: linear-gradient(to bottom, #11cdd4, #11999e);
-  -webkit-border-radius: 8;
-  -moz-border-radius: 8;
-  border-radius: 8px;
-  font-family: "Montserrat", sans-serif;
-  color: #ffffff;
-  font-size: 20px;
-  padding: 10px 20px 10px 20px;
+nav ul li a {
   text-decoration: none;
+  color: #FFF;
+  padding: 8px 20px;
+  border-radius: 7px;
+  transition: all .3s ease;
 }
 
-.btn:hover {
-  background: #30e3cb;
-  background-image: -webkit-linear-gradient(top, #30e3cb, #2bc4ad);
-  background-image: -moz-linear-gradient(top, #30e3cb, #2bc4ad);
-  background-image: -ms-linear-gradient(top, #30e3cb, #2bc4ad);
-  background-image: -o-linear-gradient(top, #30e3cb, #2bc4ad);
-  background-image: linear-gradient(to bottom, #30e3cb, #2bc4ad);
-  text-decoration: none;
+nav ul li a:hover,
+nav ul li a.active {
+  color: #FFF;
+  background: #0075FF;
 }
+
+
+.hero-image {
+  background-image: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, 0)), url("../images/hero_image.jpg");
+  height: 70%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+
+.hero-text {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+
+/***************************** The sidepanel menu ****************************/
+#sidebar {
+  height: 100%;
+  /* Specify a height */
+  width: 0;
+  /* 0 width - change this with JavaScript */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Stay on top */
+  top: ;
+  left: 0;
+  background-color: rgba(32, 32, 32, .9);
+  /* Black*/
+  backdrop-filter: blur(5px);
+  overflow-x: hidden;
+  /* Disable  scroll */
+  padding: 60px 0;
+  /* Place content 60px from the top */
+  transition: 0.5s;
+  /* 0.5 second transition effect to slide in the sidepanel */
+}
+
+#sidebar.active {
+  width: 250px;
+}
+
+#sidebar img {
+  height: 200px;
+  margin-bottom: 30px;
+}
+
+/* The sidepanel links */
+#sidebar ul {
+  position: relative;
+  margin-left: 20px;
+}
+
+#sidebar ul li {
+  position: relative;
+  display: block;
+  left: 0;
+  color: #818181;
+  list-style: none;
+  margin: 4px 0;
+  border-left: 2px solid #24ff0b;
+  transition: 0.5s;
+  cursor: pointer;
+
+  font-size: 25px;
+}
+
+
+#sidebar ul li:hover {
+  /* color: #f1f1f1; */
+  left: 10px;
+}
+
+
+#sidebar ul li::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #24ff0b;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: 0.5s;
+}
+
+#sidebar ul li:hover::before {
+  transform: scaleX(1);
+}
+
+#sidebar ul li a {
+  text-decoration: none;
+  color: #fff;
+  position: relative;
+  padding: 8px;
+  z-index: 1;
+  transform: 0.5s;
+}
+
+#sidebar ul li:hover a {
+  color: #111;
+}
+
+/* When  mouse over the side panel navigation links, change their color */
+
+/* Position and style the close button (top right corner) */
+/* Style the button that is used to open the sidepanel */
+#toggle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #fff;
+  cursor: pointer;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+#toggle:hover {
+  /* background-color: #0075FF; */
+  color: #FFF;
+}
+
+#toggle::before {
+  content: '';
+  position: absolute;
+  width: 28px;
+  height: 2px;
+  background: rgb(32, 32, 32);
+  transform: translateY(-5px);
+  transition: 0.5s;
+}
+
+#toggle::after {
+  content: '';
+  position: absolute;
+  width: 28px;
+  height: 2px;
+  background: rgb(32, 32, 32);
+  transform: translateY(5px);
+  transition: 0.5s;
+}
+
+#toggle.active::before {
+  transform: translateY(0px) rotate(-135deg);
+}
+
+#toggle.active::after {
+  transform: translateY(0px) rotate(135deg);
+}
+
+
+/* css compnay section */
+
+
+#company {
+  background-image: url("../images/testimonials_image.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: auto;
+  padding: 10px 0;
+
+
+}
+
+#company .heading {
+  margin: 20px;
+  padding: 40px 0 20px;
+  text-align: center;
+  font-size: 2rem;
+  border-bottom: 2px solid #111;
+
+}
+
+
+#company .container {
+  display: flex;
+  margin: 10px 10%;
+  gap: 10px;
+
+
+
+}
+
+#company .container .content {
+
+  width: 100%;
+}
+
+
+#company .container .image {
+width: 100%;
+
+}
+
+@media only screen and (max-width: 768px) {
+  #company .container {
+    flex-wrap: wrap;
+  justify-content: space-around;
+  }
+}
+
+
+
+
+
+/******************* css team Section *************************/
+
+#team {
+  background-image: url("../images/testimonials_image.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: auto;
+
+}
+
+#team .heading {
+  padding: 40px 0 20px;
+  margin: 0 20px;
+  text-align: center;
+  font-size: 2rem;
+  border-bottom: 2px solid #111;
+
+}
+
+#team .card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-gap: 20px;
+  padding-top: 10px;
+}
+
+#team .card-grid .card {
+  position: relative;
+  width: 350px;
+  margin: 60px auto 30px;
+  background: rgba(0, 0, 0, .6);
+  backdrop-filter: blur(5px);
+  padding: 60px 20px 20px;
+  box-sizing: border-box;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+#team .card-grid .card img {
+  position: absolute;
+  top: -50px;
+  left: 0;
+  right: 0;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  margin: 0 auto;
+  border-radius: 50%;
+  border: 2px solid rgba(253, 189, 10, 1);
+  253,189,1
+}
+
+
+#team .card-grid .card .content h2 {
+  font-size: 1.1rem;
+  color: #fff;
+
+}
+
+#team .card-grid .card .content h2 span {
+  color: #03a9f4;
+  font-size: 1.14rem;
+
+}
+
+#team .card-grid .card .content p {
+  margin: 20px auto 5px;
+  font-size: 1.1rem;
+  line-height: 1.5rem;
+  color: #fff;
+}
+
+
+/******************* css footer Section *************************/
+
+#footer {
+  width: 100%;
+
+  bottom: 0;
+  background-image: linear-gradient(rgba(0, 0, 0, .2), rgba(0, 0, 0, .8)), url("../images/footer_image.jpg");
+  color: #fff;
+  padding: 40px 0 100px 30px;
+
+  line-height: 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  }
+
+  .row{
+    width: 85%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-Start;
+    justify-content: space-between;
+  }
+
+  .col {
+    flex-basis: 250px;
+    padding: 10px;
+    margin-top: 60px;
+  }
+
+  .keep-together {
+    white-space: nowrap;
+  }
+
+  .footer-logo {
+    width: 180px;
+    margin-bottom: 30px;
+    filter: invert(1) brightness(100) drop-shadow(5px 5px 5px #111);
+  }
+
+  #footer .col h3 {
+    width: fit-content;
+    margin-bottom: 30px;
+    position:relative;
+  }
+
+
+
+  #footer .row .col ul li {
+    list-style: none;
+    margin-bottom: 12px;
+
+  }
+
+  #footer .row .col ul li a{
+    text-decoration: none;
+    color: #fff;
+
+  }
+
+
+  span i {
+  /* color: red; */
+  }
+
+
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (max-width: 600px) {}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (max-width: 768px) {}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (max-width: 992px) {
+  nav {
+    justify-content: flex-end;
+  }
+
+  nav ul li {
+    display: none;
+  }
+
+  #toggle {
+    display: flex;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {}
